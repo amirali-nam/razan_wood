@@ -27,6 +27,7 @@ export default function RootLayout({ children }) {
     <html lang="fa" dir="rtl">
       <body>
         <div id="progress" />
+        <div className="brand-ribbon" aria-hidden="true" />
         <Header />
         <main>{children}</main>
         <Footer />
