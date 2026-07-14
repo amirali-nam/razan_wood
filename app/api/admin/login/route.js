@@ -11,9 +11,12 @@ function rateLimited(ip) {
   const rec = attempts.get(ip);
   if (!rec || now > rec.resetAt) {
     attempts.set(ip, { count: 0, resetAt: now + WINDOW_MS });
-    return false;
+    return 0;
   }
-  return rec.count >= MAX_ATTEMPTS;
+  if (rec.count >= MAX_ATTEMPTS) {
+    return Math.max(1, Math.ceil((rec.resetAt - now) / 60000)); // دقیقه‌ی باقی‌مانده
+  }
+  return 0;
 }
 function recordFail(ip) {
   const rec = attempts.get(ip);
@@ -24,9 +27,10 @@ function recordFail(ip) {
 
 export async function POST(req) {
   const ip = (req.headers.get('x-forwarded-for') || 'local').split(',')[0].trim();
-  if (rateLimited(ip)) {
+  const waitMin = rateLimited(ip);
+  if (waitMin) {
     return NextResponse.json(
-      { error: 'تلاش‌های زیاد ناموفق — ۱۵ دقیقه دیگر امتحان کنید' },
+      { error: `🔒 به‌خاطر تلاش‌های زیاد ناموفق، ورود موقتاً قفل شده — ${waitMin} دقیقه دیگر دوباره امتحان کنید`, locked: true },
       { status: 429 }
     );
   }

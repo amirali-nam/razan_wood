@@ -6,6 +6,7 @@ export default function AdminLogin() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [err, setErr] = useState('');
+  const [locked, setLocked] = useState(false);
   const [busy, setBusy] = useState(false);
   const router = useRouter();
 
@@ -19,8 +20,13 @@ export default function AdminLogin() {
       body: JSON.stringify({ username, password }),
     });
     setBusy(false);
-    if (r.ok) router.push('/admin');
-    else setErr('نام کاربری یا رمز اشتباه است');
+    if (r.ok) {
+      router.push('/admin');
+    } else {
+      const j = await r.json().catch(() => ({}));
+      setLocked(r.status === 429);
+      setErr(j.error || 'نام کاربری یا رمز اشتباه است');
+    }
   };
 
   return (
@@ -46,7 +52,7 @@ export default function AdminLogin() {
           autoComplete="current-password"
           required
         />
-        {err && <div className="login-err">{err}</div>}
+        {err && <div className={locked ? 'login-locked' : 'login-err'}>{err}</div>}
         <button className="btn btn-primary" disabled={busy}>
           {busy ? 'در حال ورود…' : 'ورود'}
         </button>

@@ -440,6 +440,10 @@ section{padding:68px 0}
 }
 .login-card input:focus{border-color:var(--sage-dark)}
 .login-err{color:#c0392b;font-size:.85rem;font-weight:700}
+.login-locked{
+  background:#fdf3e3;color:#9a6a1b;border:1px solid #f0d9ae;border-radius:12px;
+  padding:10px 14px;font-size:.85rem;font-weight:700;line-height:1.8;
+}
 .admin-wrap{max-width:1000px;margin:0 auto;padding:28px 20px 80px}
 .admin-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px}
 .admin-top h1{font-size:1.15rem;color:var(--walnut-d)}

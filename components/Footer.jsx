@@ -31,7 +31,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="copyright">
-          © رزان — تمام حقوق محفوظ است. ساخته‌شده با ♥ و چوب گردو.
+           رزان — تمام حقوق محفوظ است.
           <span className="dev-credit">
             {' · '}ساخته شده توسط{' '}
             <a href={SITE.developer.github} target="_blank" rel="noopener">
