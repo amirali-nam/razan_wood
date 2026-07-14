@@ -4,8 +4,15 @@ A full-stack, RTL (Persian) e-commerce showcase for **Razan Handicraft Woods**, 
 
 > 🇮🇷 مستندات فارسی: [README.fa.md](./README.fa.md)
 
-<!-- Add a screenshot here: docs/screenshot-home.png -->
-<!-- ![Home page](docs/screenshot-home.png) -->
+![Home page](docs/screenshot-home.png)
+
+<details>
+<summary>More screenshots</summary>
+
+### Admin login
+![Admin login](docs/screenshot-admin-login.png)
+
+</details>
 
 ## ✨ Highlights
 
