@@ -141,7 +141,8 @@ input,select,textarea{font-family:inherit}
 .arch{
   aspect-ratio:4/5;border-radius:999px 999px var(--radius) var(--radius);
   background:linear-gradient(160deg,var(--walnut-2),var(--walnut-d));
-  box-shadow:var(--shadow);position:relative;overflow:hidden;
+  box-shadow:var(--shadow), 0 0 0 7px var(--white), 0 0 0 9px rgba(122,82,48,.4);
+  position:relative;overflow:hidden;
   animation:archFloat 8s ease-in-out infinite;
 }
 @keyframes archFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
