@@ -1,0 +1,8 @@
+{
+  "platform": "next",
+  "app": "razanwood",
+  "port": 3000,
+  "disks": [
+    { "name": "data", "mountTo": "/app/data" }
+  ]
+}
