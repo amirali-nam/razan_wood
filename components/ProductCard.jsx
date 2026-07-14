@@ -2,6 +2,8 @@
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 import { SITE, waLink, faNum } from '@/lib/site';
+import InstagramIcon from '@/components/InstagramIcon';
+import WhatsappIcon from '@/components/WhatsappIcon';
 
 /* کارت چندعکسی: با نگه‌داشتن موس، عکس‌های محصول ورق می‌خورند */
 export default function ProductCard({ product, delay = 0 }) {
@@ -58,6 +60,7 @@ export default function ProductCard({ product, delay = 0 }) {
         <div className="price">{product.price}</div>
         <div className="card-actions">
           <a className="act-dm" href={SITE.igDirect} target="_blank" rel="noopener">
+            <InstagramIcon size={16} />
             سفارش در دایرکت
           </a>
           <a
@@ -66,6 +69,7 @@ export default function ProductCard({ product, delay = 0 }) {
             target="_blank"
             rel="noopener"
           >
+            <WhatsappIcon size={16} />
             واتساپ
           </a>
         </div>

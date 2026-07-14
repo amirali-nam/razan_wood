@@ -14,7 +14,7 @@ export default function Footer() {
               رنگ زندگی بر تن چوب 🌱
             </p>
           </div>
-          <div>
+          <div className="foot-quick">
             <h4>دسترسی سریع</h4>
             <Link href="/products/">محصولات</Link>
             <Link href="/gallery/">گالری</Link>

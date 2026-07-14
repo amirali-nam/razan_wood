@@ -14,6 +14,18 @@ export default function AboutPage() {
         <p>رنگ زندگی بر تن چوب — سه سال کنار چوب، مغار و صبر.</p>
       </div>
 
+      {/* بنر سینمایی — پشت‌بام یزد با تابلوی رزان */}
+      <figure className="about-hero reveal">
+        <img
+          src="/images/about-rooftop.jpg"
+          alt="بانوی رزان با تابلوی حکاکی‌شده‌ی لوگوی رزان بر پشت‌بام بادگیرهای یزد"
+        />
+        <figcaption>
+          <b>رزان</b>
+          <span>حکاکی دستی · یزد</span>
+        </figcaption>
+      </figure>
+
       <section style={{ paddingTop: 36 }}>
         <div className="container" style={{ maxWidth: 760 }}>
           <p className="reveal" style={{ color: '#5d4c3b', marginBottom: 16 }}>
@@ -80,6 +92,31 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* گالری کارگاه — دو قاب دستی */}
+      <section style={{ paddingTop: 12 }}>
+        <div className="container">
+          <div className="sec-head reveal"><h2>در کارگاه رزان</h2></div>
+          <div className="craft-gallery">
+            <figure className="reveal">
+              <img
+                src="/images/artisan-workshop.jpg"
+                alt="میز کار رزان؛ مغارها، قطعات چوب و دستانِ در حال ساخت"
+                loading="lazy"
+              />
+              <figcaption>میزِ کار و ابزارها</figcaption>
+            </figure>
+            <figure className="reveal" style={{ '--rd': '.12s' }}>
+              <img
+                src="/images/artisan-carving.jpg"
+                alt="حکاکی نزدیک؛ گل‌ها گل به گل روی تنِ چوب نقش می‌بندند"
+                loading="lazy"
+              />
+              <figcaption>حکاکی، گل به گل</figcaption>
+            </figure>
           </div>
         </div>
       </section>

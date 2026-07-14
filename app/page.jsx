@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getProducts } from '@/lib/db';
+import { getProducts, getReviews } from '@/lib/db';
 import { FAQS } from '@/lib/content';
 import { SITE } from '@/lib/site';
 import ProductCard from '@/components/ProductCard';
@@ -12,7 +12,13 @@ export const dynamic = 'force-dynamic';
 
 export default function Home() {
   const products = getProducts();
-  const featured = products.filter((p) => p.featured);
+  const reviews = getReviews();
+  // صفحه‌ی اول همیشه دقیقاً ۶ محصول نشان می‌دهد:
+  // اول منتخب‌ها، اگر کمتر از ۶ بود با بقیه پر می‌شود؛ بیشترش فقط در صفحه‌ی محصولات
+  const featured = [
+    ...products.filter((p) => p.featured),
+    ...products.filter((p) => !p.featured),
+  ].slice(0, 6);
 
   return (
     <>
@@ -85,18 +91,29 @@ export default function Home() {
               رزان از عشق به چوب و هنر دستی شروع شد؛ از حکاکیِ گل‌ها و شاخ‌وبرگ روی تنِ چوب
               گردو. هر محصول ساعت‌ها زمان می‌برد و هیچ دو قطعه‌ای دقیقاً مثل هم نیستند.
             </p>
-            <Link className="btn btn-primary" href="/about/" style={{ marginTop: 10 }}>
+            <div className="about-card" style={{ margin: '20px 0' }}>
+              <Counters />
+            </div>
+            <Link className="btn btn-primary" href="/about/">
               خواندن قصه‌ی کامل
             </Link>
           </div>
-          <div className="about-card reveal" style={{ '--rd': '.15s' }}>
-            <Counters />
-          </div>
+          <figure className="about-photo reveal" style={{ '--rd': '.15s' }}>
+            <img
+              src="/images/artisan-workshop.jpg"
+              alt="هنرمند رزان در حال حکاکی و پرداختِ یک قطعه‌ی چوبی در کارگاه"
+              loading="lazy"
+            />
+            <figcaption>
+              <span className="dot" />
+              دستانِ پشتِ هر قطعه
+            </figcaption>
+          </figure>
         </div>
       </section>
 
       {/* ============ نظرات ============ */}
-      <Reviews />
+      <Reviews reviews={reviews} />
 
       {/* ============ روش سفارش ============ */}
       <section>

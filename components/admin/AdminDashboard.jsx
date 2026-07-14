@@ -5,6 +5,11 @@ import { faNum } from '@/lib/site';
 
 export default function AdminDashboard() {
   const [products, setProducts] = useState(null);
+  const [reviews, setReviews] = useState(null);
+  const [rForm, setRForm] = useState({ text: '', who: '', rating: 5 });
+  const [rBusy, setRBusy] = useState(false);
+  const [editId, setEditId] = useState(null);
+  const [editDraft, setEditDraft] = useState({ text: '', who: '', rating: 5 });
   const [msg, setMsg] = useState(null); // {text, ok}
   const [busy, setBusy] = useState(false);
   const [previews, setPreviews] = useState([]);
@@ -21,7 +26,53 @@ export default function AdminDashboard() {
     if (r.status === 401) return router.push('/admin/login');
     setProducts(await r.json());
   };
-  useEffect(() => { load(); }, []);
+  const loadReviews = async () => {
+    const r = await fetch('/api/admin/reviews');
+    if (r.status === 401) return router.push('/admin/login');
+    setReviews(await r.json());
+  };
+  useEffect(() => { load(); loadReviews(); }, []);
+
+  const addReview = async (e) => {
+    e.preventDefault();
+    if (!rForm.text.trim()) return flash('متن نظر لازم است', false);
+    setRBusy(true);
+    const j = await (
+      await fetch('/api/admin/reviews', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(rForm),
+      })
+    ).json();
+    setRBusy(false);
+    if (j.ok) {
+      flash('✓ نظر اضافه شد و روی سایت است!');
+      setRForm({ text: '', who: '', rating: 5 });
+      loadReviews();
+    } else flash(j.error || 'خطا', false);
+  };
+
+  const saveReview = async (id) => {
+    if (!editDraft.text.trim()) return flash('متن نظر لازم است', false);
+    const j = await (
+      await fetch('/api/admin/reviews/' + id, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(editDraft),
+      })
+    ).json();
+    if (j.ok) {
+      flash('✓ نظر ویرایش شد');
+      setEditId(null);
+      loadReviews();
+    } else flash(j.error || 'خطا', false);
+  };
+
+  const delReview = async (id) => {
+    if (!confirm('این نظر حذف شود؟')) return;
+    const j = await (await fetch('/api/admin/reviews/' + id, { method: 'DELETE' })).json();
+    j.ok ? (flash('✓ نظر حذف شد'), loadReviews()) : flash(j.error, false);
+  };
 
   const addProduct = async (e) => {
     e.preventDefault();
@@ -210,7 +261,123 @@ export default function AdminDashboard() {
         </div>
       )}
 
+      <h2 className="admin-h2">➕ افزودن نظر مشتری</h2>
+      <form onSubmit={addReview} className="admin-form">
+        <div>
+          <label>متن نظر *</label>
+          <textarea
+            value={rForm.text}
+            onChange={(e) => setRForm({ ...rForm, text: e.target.value })}
+            placeholder="مثلاً: جعبه‌ای که گرفتم از عکس هم قشنگ‌تر بود…"
+            required
+          />
+        </div>
+        <div className="grid2">
+          <div>
+            <label>نویسنده <small>مثلاً: مشتری از تهران</small></label>
+            <input
+              value={rForm.who}
+              onChange={(e) => setRForm({ ...rForm, who: e.target.value })}
+              placeholder="مشتری از تهران"
+            />
+          </div>
+          <div>
+            <label>امتیاز (ستاره)</label>
+            <StarPicker value={rForm.rating} onChange={(n) => setRForm({ ...rForm, rating: n })} />
+          </div>
+        </div>
+        <div>
+          <button className="btn btn-primary" disabled={rBusy}>
+            {rBusy ? 'در حال ذخیره…' : 'افزودن نظر'}
+          </button>
+        </div>
+      </form>
+
+      <h2 className="admin-h2">
+        ⭐ نظرات {reviews && <small>({faNum(reviews.length)} نظر)</small>}
+      </h2>
+      {!reviews ? (
+        <p>در حال بارگذاری…</p>
+      ) : reviews.length === 0 ? (
+        <p style={{ color: '#7d6c5a' }}>هنوز نظری ثبت نشده — از فرم بالا اضافه کنید.</p>
+      ) : (
+        <div className="admin-rlist">
+          {reviews.map((r) => (
+            <div className="admin-rcard" key={r.id}>
+              {editId === r.id ? (
+                <div className="admin-form" style={{ gap: 10 }}>
+                  <textarea
+                    value={editDraft.text}
+                    onChange={(e) => setEditDraft({ ...editDraft, text: e.target.value })}
+                  />
+                  <div className="grid2">
+                    <input
+                      value={editDraft.who}
+                      onChange={(e) => setEditDraft({ ...editDraft, who: e.target.value })}
+                      placeholder="نویسنده"
+                    />
+                    <StarPicker
+                      value={editDraft.rating}
+                      onChange={(n) => setEditDraft({ ...editDraft, rating: n })}
+                    />
+                  </div>
+                  <div className="row">
+                    <button className="btn btn-primary a-small" onClick={() => saveReview(r.id)}>
+                      ذخیره
+                    </button>
+                    <button className="btn btn-ghost a-small" onClick={() => setEditId(null)}>
+                      انصراف
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <div className="stars-static" aria-label={`${r.rating} ستاره`}>
+                    <span className="on">{'★'.repeat(Math.min(5, Math.max(1, r.rating)))}</span>
+                    <span className="off">{'★'.repeat(5 - Math.min(5, Math.max(1, r.rating)))}</span>
+                  </div>
+                  <q>{r.text}</q>
+                  {r.who && <div className="meta">— {r.who}</div>}
+                  <div className="row">
+                    <button
+                      className="btn btn-ghost a-small"
+                      onClick={() => {
+                        setEditId(r.id);
+                        setEditDraft({ text: r.text, who: r.who || '', rating: r.rating });
+                      }}
+                    >
+                      ویرایش
+                    </button>
+                    <button className="btn a-danger" onClick={() => delReview(r.id)}>
+                      حذف
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+
       {msg && <div className={`admin-msg ${msg.ok ? 'ok' : 'err'}`}>{msg.text}</div>}
+    </div>
+  );
+}
+
+function StarPicker({ value, onChange }) {
+  return (
+    <div className="star-picker" role="radiogroup" aria-label="امتیاز">
+      {[1, 2, 3, 4, 5].map((n) => (
+        <button
+          type="button"
+          key={n}
+          className={n <= value ? 'on' : ''}
+          aria-label={`${n} ستاره`}
+          onClick={() => onChange(n)}
+        >
+          ★
+        </button>
+      ))}
     </div>
   );
 }

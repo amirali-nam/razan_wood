@@ -1,6 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { SITE } from '@/lib/site';
+import InstagramIcon from '@/components/InstagramIcon';
+import WhatsappIcon from '@/components/WhatsappIcon';
 
 export default function FloatingCTA() {
   const [on, setOn] = useState(false);
@@ -19,9 +21,11 @@ export default function FloatingCTA() {
     <>
       <div className={`float-cta ${on ? 'on' : ''}`}>
         <a className="fc-dm" href={SITE.igDirect} target="_blank" rel="noopener">
-          ✉ سفارش در دایرکت
+          <InstagramIcon size={17} />
+          سفارش در دایرکت
         </a>
         <a className="fc-wa" href={`https://wa.me/${SITE.waNumber}`} target="_blank" rel="noopener">
+          <WhatsappIcon size={17} />
           واتساپ
         </a>
       </div>
