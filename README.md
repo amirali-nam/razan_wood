@@ -2,7 +2,7 @@
 
 A full-stack, RTL (Persian) e-commerce showcase for **Razan Handicraft Woods**, a hand-carved woodwork brand. Built end-to-end: custom design system, cinematic product showcase, live search with autocomplete, and a self-hosted admin panel — products go live **instantly, with zero rebuilds**.
 
-**🌿 [View Live Demo →](https://razan-wood-1.onrender.com)**
+**🌿 [View Live Demo →](https://razan-wood-1.onrender.com)** _(free hosting — the first load may take ~1 min to wake up)_
 
 > 🇮🇷 مستندات فارسی: [README.fa.md](./README.fa.md)
 
