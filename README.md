@@ -16,7 +16,7 @@ A full-stack, RTL (Persian) e-commerce showcase for **Razan Handicraft Woods**, 
 
 </details>
 
-## ✨ Highlights
+##  Highlights
 
 - **Custom design system** derived from the brand's visual identity (sage / cream / walnut palette, arch motifs from the logo), with signature motion: Ken Burns product spotlight, scroll-reveals, multi-photo hover cards, animated counters — all respecting `prefers-reduced-motion`
 - **Live search with autocomplete** — suggests products (with thumbnails) and categories as you type; full keyboard navigation (↑ ↓ Enter Esc) and match highlighting
@@ -36,7 +36,7 @@ A full-stack, RTL (Persian) e-commerce showcase for **Razan Handicraft Woods**, 
 | Styling | Hand-written CSS design system (no UI framework), RTL-first |
 | Deploy | `output: standalone` — any Node host (tested for Liara PaaS) |
 
-## 🚀 Getting Started
+##  Getting Started
 
 ```bash
 npm install
@@ -44,7 +44,7 @@ cp .env.example .env   # set ADMIN_USER / ADMIN_PASSWORD
 npm run dev            # http://localhost:3000 — admin at /admin
 ```
 
-## 📦 Deployment (Liara / any Node host)
+##  Deployment (Liara / any Node host)
 
 1. Create a Next.js app, mount a persistent disk at `/app/data`
 2. Set env vars: `ADMIN_USER`, `ADMIN_PASSWORD`, `DATA_DIR=/app/data`
