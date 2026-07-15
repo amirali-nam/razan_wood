@@ -21,7 +21,7 @@ export default function AboutPage() {
           alt="بانوی رزان با تابلوی حکاکی‌شده‌ی لوگوی رزان بر پشت‌بام بادگیرهای یزد"
         />
         <figcaption>
-          <b>رزان</b>
+          <img src="/razan-wordmark-light.png" alt="رزان" className="hero-wordmark" />
           <span>حکاکی دستی · یزد</span>
         </figcaption>
       </figure>

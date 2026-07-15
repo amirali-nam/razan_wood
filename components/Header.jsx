@@ -22,7 +22,8 @@ export default function Header() {
         <Link className="brand" href="/">
           <img src="/logo.png" alt="لوگوی رزان" className="logo-img" />
           <span>
-            رزان<small>Handicraft Woods</small>
+            <img src="/razan-wordmark.png" alt="رزان" className="brand-wordmark" />
+            <small>Handicraft Woods</small>
           </span>
         </Link>
         <nav className={open ? 'open' : ''}>
