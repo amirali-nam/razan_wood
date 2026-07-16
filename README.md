@@ -2,7 +2,7 @@
 
 A full-stack, RTL (Persian) e-commerce showcase for **Razan Handicraft Woods**, a hand-carved woodwork brand. Built end-to-end: custom design system, cinematic product showcase, live search with autocomplete, and a self-hosted admin panel — products go live **instantly, with zero rebuilds**.
 
-**🌿 [View Live Demo →](https://razan-wood-1.onrender.com)** _(free hosting — the first load may take ~1 min to wake up)_
+** [View Live Demo →](https://razan-wood-1.onrender.com)** _(free hosting — the first load may take ~1 min to wake up)_
 
 > 🇮🇷 مستندات فارسی: [README.fa.md](./README.fa.md)
 
@@ -25,7 +25,7 @@ A full-stack, RTL (Persian) e-commerce showcase for **Razan Handicraft Woods**, 
 - **Conversion flow built for DM commerce** — every product deep-links into Instagram Direct / WhatsApp with a pre-filled message; a custom-order form composes the message from user input
 - **SEO-ready** — per-product server-rendered pages with dedicated metadata/OG tags, dynamic `sitemap.xml` and `robots.txt`, self-hosted variable font (no Google Fonts dependency)
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 | Layer | Choice |
 |---|---|
@@ -52,7 +52,7 @@ npm run dev            # http://localhost:3000 — admin at /admin
 
 The database seeds itself from `lib/data/products.json` on first run.
 
-## 🗂 Structure
+##  Structure
 
 ```
 app/            pages (App Router) + API route handlers
