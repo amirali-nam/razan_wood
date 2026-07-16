@@ -83,8 +83,8 @@ input,select,textarea{font-family:inherit}
 }
 .nav-links a:not(.nav-cta):hover::after,
 .nav-links a.active:not(.nav-cta)::after{width:100%}
-.nav-cta{background:var(--terra-d);color:var(--white)!important;padding:9px 20px;border-radius:999px;font-size:.88rem;transition:background .2s}
-.nav-cta:hover{background:var(--walnut)}
+.nav-cta{background:var(--sage-dark);color:var(--white)!important;padding:9px 20px;border-radius:999px;font-size:.88rem;transition:background .2s}
+.nav-cta:hover{background:#4f6b5d}
 .menu-btn{display:none;background:none;border:none;font-size:1.6rem;color:var(--walnut-d)}
 @media(max-width:920px){
   .nav-links{display:none}
@@ -119,8 +119,8 @@ input,select,textarea{font-family:inherit}
 }
 .float-cta a:hover{transform:translateY(-3px)}
 .float-cta a svg{flex-shrink:0}
-.fc-dm{background:var(--terra-d);color:var(--white)}
-.fc-wa{background:#5f8374;color:#fff}
+.fc-dm{background:var(--sage);color:var(--walnut-d)}
+.fc-wa{background:var(--sage-dark);color:#fff}
 #toTop{
   position:fixed;bottom:22px;right:22px;z-index:60;width:48px;height:48px;border-radius:50%;border:none;
   background:var(--sage);color:var(--walnut-d);font-size:1.2rem;
@@ -190,9 +190,9 @@ section{padding:68px 0}
 .page-head p{color:#6f6357}
 
 /* ---------- ویترین سینمایی ---------- */
-.spotlight{background:var(--bark);color:var(--cream);padding:76px 0;position:relative;overflow:hidden}
-.spotlight .sec-head h2{color:var(--cream)}
-.spotlight .sec-head p{color:#cbbaa4}
+.spotlight{background:linear-gradient(160deg,var(--olive),#d9d6a6);color:var(--ink);padding:76px 0;position:relative;overflow:hidden}
+.spotlight .sec-head h2{color:var(--walnut-d)}
+.spotlight .sec-head p{color:#5c5349}
 .spot-stage{
   position:relative;max-width:980px;margin:0 auto;aspect-ratio:16/9;border-radius:24px;overflow:hidden;
   box-shadow:0 30px 60px rgba(0,0,0,.45);
@@ -309,8 +309,8 @@ section{padding:68px 0}
 .card-actions a{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;text-align:center;padding:9px 0;border-radius:12px;font-size:.83rem;font-weight:700;transition:opacity .2s}
 .card-actions a svg{flex-shrink:0}
 .card-actions a:hover{opacity:.85}
-.act-dm{background:var(--terra-d);color:var(--white)}
-.act-wa{background:#e7efe8;color:#4a6b52;border:1px solid #cdddcf}
+.act-dm{background:var(--sage);color:var(--walnut-d)}
+.act-wa{background:var(--sage-dark);color:#fff}
 
 /* ---------- صفحه‌ی محصول ---------- */
 .product-page{display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:start;padding:48px 0}
@@ -369,7 +369,11 @@ section{padding:68px 0}
 
 /* ---------- درباره ---------- */
 .about-band{background:var(--sage);position:relative;overflow:hidden}
-.about-band::before{content:"";position:absolute;left:-70px;top:-70px;width:240px;height:240px;border-radius:50%;border:36px solid rgba(255,253,248,.22)}
+.about-band::before{
+  content:"";position:absolute;top:50%;right:-70px;transform:translateY(-50%);z-index:0;
+  width:clamp(280px,40%,440px);aspect-ratio:422/282;pointer-events:none;
+  background:url('/tree-motif.png') no-repeat center/contain;opacity:.2;
+}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;position:relative}
 .about-band h2{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:900;color:var(--walnut-d);margin-bottom:14px}
 .about-band p{color:#3d4a3b;margin-bottom:12px}
@@ -488,25 +492,31 @@ section{padding:68px 0}
 
 /* ---------- CTA ---------- */
 .cta{
-  background:var(--walnut-d);
-  border-radius:26px;padding:56px 32px;text-align:center;color:var(--cream);
+  background:linear-gradient(160deg,var(--peach),#f8e8d0);
+  border-radius:26px;padding:56px 32px;text-align:center;color:var(--ink);
   position:relative;overflow:hidden;
 }
-.cta::before{content:"✿";position:absolute;font-size:11rem;opacity:.06;color:#fff;top:-30px;left:-20px;transform:rotate(-15deg)}
-.cta h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:900;margin-bottom:10px;color:#fff}
-.cta p{opacity:.85;margin-bottom:26px}
-.cta .btn-ghost{border-color:var(--cream);color:var(--cream)}
+.cta::before,.cta::after{
+  content:"";position:absolute;width:210px;height:210px;pointer-events:none;z-index:0;
+  background:url('/rose-motif.png') no-repeat center/contain;
+}
+.cta::before{top:-36px;left:-34px;opacity:.16;transform:rotate(-6deg)}
+.cta::after{bottom:-42px;right:-34px;opacity:.12;transform:rotate(174deg)}
+.cta>*{position:relative;z-index:1}
+.cta h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:900;margin-bottom:10px;color:var(--walnut-d)}
+.cta p{color:#6f6357;margin-bottom:26px}
+.cta .btn-ghost{background:var(--sage);border-color:var(--sage);color:var(--walnut-d)}
 
 /* ---------- فوتر ---------- */
-.site-footer{background:var(--walnut-d);color:var(--cream);padding:44px 0 26px;margin-top:64px}
+.site-footer{background:var(--sage);color:var(--walnut-d);padding:44px 0 26px;margin-top:64px}
 .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:36px;margin-bottom:30px}
-.site-footer h4{color:#fff;margin-bottom:10px;font-size:1rem}
-.site-footer a{opacity:.8;transition:opacity .2s;font-size:.9rem;display:block;padding:3px 0}
+.site-footer h4{color:var(--walnut-d);margin-bottom:10px;font-size:1rem}
+.site-footer a{opacity:.85;transition:opacity .2s;font-size:.9rem;display:block;padding:3px 0}
 .site-footer a:hover{opacity:1}
-.site-footer p{font-size:.88rem;opacity:.8}
-.copyright{border-top:1px solid rgba(246,241,229,.18);padding-top:18px;text-align:center;font-size:.8rem;opacity:.65}
-.dev-credit a{display:inline;padding:0;opacity:1;color:var(--sage);font-weight:700;text-decoration:underline;text-underline-offset:3px}
-.dev-credit a:hover{color:#fff}
+.site-footer p{font-size:.88rem;opacity:.85}
+.copyright{border-top:1px solid rgba(51,48,43,.2);padding-top:18px;text-align:center;font-size:.8rem;opacity:.7}
+.dev-credit a{display:inline;padding:0;opacity:1;color:var(--terra-d);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.dev-credit a:hover{color:var(--walnut-d)}
 @media(max-width:760px){
   .site-footer{padding:30px 0 20px;margin-top:44px}
   .foot-grid{grid-template-columns:1fr;gap:22px;margin-bottom:20px}
