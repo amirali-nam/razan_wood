@@ -104,7 +104,7 @@ input,select,textarea{font-family:inherit}
 .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
 .btn-primary{background:var(--terra-d);color:var(--white)}
 .btn-ghost{background:transparent;border:2px solid var(--walnut-d);color:var(--walnut-d)}
-.btn-wa{background:#5f8374;color:#fff}
+.btn-wa{background:var(--cream);color:var(--walnut-d);border:1.5px solid #dcc9a6}
 .btn-sage{background:var(--sage-dark);color:#fff}
 
 /* ---------- شناورها ---------- */
@@ -120,7 +120,7 @@ input,select,textarea{font-family:inherit}
 .float-cta a:hover{transform:translateY(-3px)}
 .float-cta a svg{flex-shrink:0}
 .fc-dm{background:var(--sage);color:var(--walnut-d)}
-.fc-wa{background:var(--sage-dark);color:#fff}
+.fc-wa{background:var(--cream);color:var(--walnut-d);border:1.5px solid #dcc9a6}
 #toTop{
   position:fixed;bottom:22px;right:22px;z-index:60;width:48px;height:48px;border-radius:50%;border:none;
   background:var(--sage);color:var(--walnut-d);font-size:1.2rem;
@@ -310,7 +310,7 @@ section{padding:68px 0}
 .card-actions a svg{flex-shrink:0}
 .card-actions a:hover{opacity:.85}
 .act-dm{background:var(--sage);color:var(--walnut-d)}
-.act-wa{background:var(--sage-dark);color:#fff}
+.act-wa{background:var(--cream);color:var(--walnut-d);border:1.5px solid #dcc9a6}
 
 /* ---------- صفحه‌ی محصول ---------- */
 .product-page{display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:start;padding:48px 0}
@@ -458,6 +458,9 @@ section{padding:68px 0}
   display:grid;place-items:center;font-size:1.3rem;font-weight:900;transition:transform .4s cubic-bezier(.34,1.56,.64,1);
 }
 .step:hover .n{transform:rotate(360deg) scale(1.1)}
+.steps .step:nth-child(1) .n{background:var(--olive)}
+.steps .step:nth-child(2) .n{background:var(--terra)}
+.steps .step:nth-child(3) .n{background:var(--orange)}
 .step h3{color:var(--walnut-d);font-size:1.02rem;margin-bottom:6px}
 .step p{font-size:.86rem;color:#6f6357}
 @media(max-width:760px){.steps{grid-template-columns:1fr}}
@@ -496,13 +499,6 @@ section{padding:68px 0}
   border-radius:26px;padding:56px 32px;text-align:center;color:var(--ink);
   position:relative;overflow:hidden;
 }
-.cta::before,.cta::after{
-  content:"";position:absolute;width:210px;height:210px;pointer-events:none;z-index:0;
-  background:url('/rose-motif.png') no-repeat center/contain;
-}
-.cta::before{top:-36px;left:-34px;opacity:.16;transform:rotate(-6deg)}
-.cta::after{bottom:-42px;right:-34px;opacity:.12;transform:rotate(174deg)}
-.cta>*{position:relative;z-index:1}
 .cta h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:900;margin-bottom:10px;color:var(--walnut-d)}
 .cta p{color:#6f6357;margin-bottom:26px}
 .cta .btn-ghost{background:var(--sage);border-color:var(--sage);color:var(--walnut-d)}
