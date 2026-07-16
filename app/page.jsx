@@ -56,7 +56,7 @@ export default function Home() {
         <div className="container trust-grid">
           <div className="trust-item reveal"><b>۱۰۰٪ دست‌ساز</b><span>حکاکی و منبت با دست</span></div>
           <div className="trust-item reveal" style={{ '--rd': '.1s' }}><b>چوب طبیعی</b><span>گردو و چوب‌های مرغوب</span></div>
-          <div className="trust-item reveal" style={{ '--rd': '.2s' }}><b>+۳ سال تجربه</b><span>و صدها سفارش موفق</span></div>
+          <div className="trust-item reveal" style={{ '--rd': '.2s' }}><b>+۶ سال تجربه</b><span>و صدها سفارش موفق</span></div>
           <div className="trust-item reveal" style={{ '--rd': '.3s' }}><b>ارسال به سراسر ایران</b><span>بسته‌بندی مطمئن</span></div>
         </div>
       </div>

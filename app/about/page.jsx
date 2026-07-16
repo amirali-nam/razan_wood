@@ -126,7 +126,7 @@ export default function AboutPage() {
           <div className="reveal">
             <h2>رزان در یک نگاه</h2>
             <p>
-              بیش از ۱۲۰ کار منتشرشده، بیش از ۷٬۵۰۰ همراه در اینستاگرام و سه سال تجربه‌ی
+              بیش از ۱۲۰ کار منتشرشده، بیش از ۷٬۵۰۰ همراه در اینستاگرام و شش سال تجربه‌ی
               ساخت و ارسال به سراسر ایران.
             </p>
             <a className="btn btn-primary" href={SITE.instagram} target="_blank" rel="noopener" style={{ marginTop: 10 }}>
