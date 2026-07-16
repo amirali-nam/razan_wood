@@ -48,7 +48,7 @@ export default function Counters() {
         <span>دنبال‌کننده</span>
       </div>
       <div>
-        <Counter end={3} suffix=" سال" />
+        <Counter end={6} suffix=" سال" />
         <span>سابقه فعالیت</span>
       </div>
     </div>
