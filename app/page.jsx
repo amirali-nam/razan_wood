@@ -7,6 +7,7 @@ import Spotlight from '@/components/Spotlight';
 import Reviews from '@/components/Reviews';
 import Counters from '@/components/Counters';
 import { HeroLeaves, RisingTitle } from '@/components/HeroFX';
+import HeroVideo from '@/components/HeroVideo';
 
 export const dynamic = 'force-dynamic';
 
@@ -45,7 +46,7 @@ export default function Home() {
           </div>
           <div className="hero-visual">
             <div className="arch">
-              <img src="/images/pedestal-bowl-1.jpg" alt="قندان پایه‌دار منبت رزان" />
+              <HeroVideo />
             </div>
           </div>
         </div>

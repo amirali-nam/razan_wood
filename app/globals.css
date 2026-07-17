@@ -134,9 +134,9 @@ input,select,textarea{font-family:inherit}
 .hero{
   padding:78px 0 68px;overflow:hidden;position:relative;isolation:isolate;
   background:
-    radial-gradient(85% 70% at 15% 12%, rgba(247,239,230,.55), transparent 58%),
-    radial-gradient(75% 75% at 90% 108%, rgba(210,224,216,.5), transparent 55%),
-    linear-gradient(168deg, var(--sage-2) 0%, var(--sage) 72%);
+    radial-gradient(90% 70% at 82% -8%, rgba(196,214,204,.45), transparent 60%),
+    radial-gradient(80% 80% at 8% 120%, rgba(196,214,204,.32), transparent 58%),
+    linear-gradient(178deg, #e9dcc8 0%, #f0e6d6 34%, var(--cream) 78%);
 }
 /* هاله‌ی نرم پشت تصویر + خط جداکننده‌ی پایین هیرو */
 .hero::before{
@@ -148,7 +148,7 @@ input,select,textarea{font-family:inherit}
   background:linear-gradient(90deg, transparent, rgba(88,72,58,.14), transparent);
 }
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
-.eyebrow{display:inline-block;background:var(--cream);color:var(--walnut-d);padding:5px 18px;border-radius:999px;font-size:.82rem;font-weight:500;margin-bottom:18px}
+.eyebrow{display:inline-block;background:var(--sage);color:var(--walnut-d);padding:5px 18px;border-radius:999px;font-size:.82rem;font-weight:500;margin-bottom:18px}
 .hero h1{font-size:clamp(2rem,4.6vw,3.2rem);font-weight:900;color:var(--walnut-d);line-height:1.5}
 .hero h1 em{font-style:normal;color:var(--terra-d)}
 .hero h1 .w{display:inline-block;overflow:hidden;vertical-align:bottom}
@@ -167,6 +167,14 @@ input,select,textarea{font-family:inherit}
 }
 @keyframes archFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 .arch img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:heroZoom 14s ease-in-out infinite alternate}
+.arch video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--cream)}
+.hero-sound{
+  position:absolute;bottom:14px;left:14px;z-index:4;width:42px;height:42px;border-radius:50%;
+  border:none;background:rgba(43,38,34,.55);color:#fff;display:grid;place-items:center;
+  backdrop-filter:blur(4px);cursor:pointer;transition:background .2s,transform .2s;
+}
+.hero-sound:hover{background:rgba(43,38,34,.82);transform:scale(1.08)}
+.hero-sound svg{width:20px;height:20px}
 @keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.1)}}
 .leaf{position:absolute;pointer-events:none;opacity:0;animation:leafFall var(--t) linear infinite;animation-delay:var(--d);top:-30px;right:var(--x)}
 @keyframes leafFall{0%{opacity:0;transform:translateY(0) rotate(0)}8%{opacity:.8}100%{opacity:0;transform:translateY(110vh) rotate(340deg) translateX(-60px)}}
