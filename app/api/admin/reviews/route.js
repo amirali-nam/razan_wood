@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { getReviews, createReview } from '@/lib/db';
 
 export async function GET() {
-  return NextResponse.json(getReviews());
+  return NextResponse.json(await getReviews());
 }
 
 export async function POST(req) {
@@ -14,7 +14,7 @@ export async function POST(req) {
     if (!text) {
       return NextResponse.json({ error: 'متن نظر لازم است' }, { status: 400 });
     }
-    const id = createReview({ text, who, rating });
+    const id = await createReview({ text, who, rating });
     return NextResponse.json({ ok: true, id });
   } catch (e) {
     return NextResponse.json({ error: e.message }, { status: 500 });

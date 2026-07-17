@@ -7,8 +7,8 @@ export const metadata = {
 };
 export const dynamic = 'force-dynamic';
 
-export default function ProductsPage() {
-  const products = getProducts();
+export default async function ProductsPage() {
+  const products = await getProducts();
   return (
     <>
       <div className="page-head">

@@ -5,7 +5,7 @@ import { saveImages, removeImageFile } from '@/lib/images';
 export async function PUT(req, { params }) {
   try {
     const { slug } = await params;
-    const p = getProduct(slug);
+    const p = await getProduct(slug);
     if (!p) return NextResponse.json({ error: 'محصول پیدا نشد' }, { status: 404 });
 
     const fd = await req.formData();
@@ -21,7 +21,7 @@ export async function PUT(req, { params }) {
     if (files.length) {
       fields.images = [...p.images, ...(await saveImages(slug, files, p.images.length + 1))];
     }
-    updateProduct(slug, fields);
+    await updateProduct(slug, fields);
     return NextResponse.json({ ok: true });
   } catch (e) {
     return NextResponse.json({ error: e.message }, { status: 500 });
@@ -31,7 +31,7 @@ export async function PUT(req, { params }) {
 export async function DELETE(_req, { params }) {
   try {
     const { slug } = await params;
-    const p = deleteProduct(slug);
+    const p = await deleteProduct(slug);
     if (!p) return NextResponse.json({ error: 'محصول پیدا نشد' }, { status: 404 });
     for (const img of p.images) await removeImageFile(img);
     return NextResponse.json({ ok: true });

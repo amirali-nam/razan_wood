@@ -11,9 +11,9 @@ import HeroVideo from '@/components/HeroVideo';
 
 export const dynamic = 'force-dynamic';
 
-export default function Home() {
-  const products = getProducts();
-  const reviews = getReviews();
+export default async function Home() {
+  const products = await getProducts();
+  const reviews = await getReviews();
   // صفحه‌ی اول همیشه دقیقاً ۶ محصول نشان می‌دهد:
   // اول منتخب‌ها، اگر کمتر از ۶ بود با بقیه پر می‌شود؛ بیشترش فقط در صفحه‌ی محصولات
   const featured = [

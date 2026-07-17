@@ -13,7 +13,7 @@ export async function PUT(req, { params }) {
     }
     if (body.who != null) fields.who = String(body.who).trim();
     if (body.rating != null) fields.rating = Number(body.rating);
-    const ok = updateReview(Number(id), fields);
+    const ok = await updateReview(Number(id), fields);
     if (!ok) return NextResponse.json({ error: 'نظر پیدا نشد' }, { status: 404 });
     return NextResponse.json({ ok: true });
   } catch (e) {
@@ -24,7 +24,7 @@ export async function PUT(req, { params }) {
 export async function DELETE(req, { params }) {
   try {
     const { id } = await params;
-    const ok = deleteReview(Number(id));
+    const ok = await deleteReview(Number(id));
     if (!ok) return NextResponse.json({ error: 'نظر پیدا نشد' }, { status: 404 });
     return NextResponse.json({ ok: true });
   } catch (e) {

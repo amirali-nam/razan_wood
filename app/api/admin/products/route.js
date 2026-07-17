@@ -3,7 +3,7 @@ import { getProducts, getProduct, createProduct } from '@/lib/db';
 import { saveImages } from '@/lib/images';
 
 export async function GET() {
-  return NextResponse.json(getProducts());
+  return NextResponse.json(await getProducts());
 }
 
 export async function POST(req) {
@@ -18,7 +18,7 @@ export async function POST(req) {
         { status: 400 }
       );
     }
-    if (getProduct(slug)) {
+    if (await getProduct(slug)) {
       return NextResponse.json({ error: 'این slug قبلاً استفاده شده' }, { status: 400 });
     }
     const files = fd.getAll('images').filter((f) => typeof f === 'object' && f.size > 0);
@@ -26,7 +26,7 @@ export async function POST(req) {
       return NextResponse.json({ error: 'حداقل یک عکس لازم است' }, { status: 400 });
     }
     const images = await saveImages(slug, files);
-    createProduct({
+    await createProduct({
       slug,
       name,
       cat: String(fd.get('cat') || 'متفرقه').trim() || 'متفرقه',

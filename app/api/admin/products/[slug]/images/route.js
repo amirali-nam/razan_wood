@@ -6,7 +6,7 @@ import { removeImageFile } from '@/lib/images';
 export async function DELETE(req, { params }) {
   try {
     const { slug } = await params;
-    const p = getProduct(slug);
+    const p = await getProduct(slug);
     if (!p) return NextResponse.json({ error: 'محصول پیدا نشد' }, { status: 404 });
     const { image } = await req.json().catch(() => ({}));
     if (p.images.length <= 1) {
@@ -15,7 +15,7 @@ export async function DELETE(req, { params }) {
     if (!p.images.includes(image)) {
       return NextResponse.json({ error: 'عکس پیدا نشد' }, { status: 404 });
     }
-    updateProduct(slug, { images: p.images.filter((i) => i !== image) });
+    await updateProduct(slug, { images: p.images.filter((i) => i !== image) });
     await removeImageFile(image);
     return NextResponse.json({ ok: true });
   } catch (e) {

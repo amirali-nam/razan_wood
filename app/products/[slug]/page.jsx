@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const p = getProduct(slug);
+  const p = await getProduct(slug);
   if (!p) return {};
   return {
     title: p.name,
@@ -20,10 +20,10 @@ export async function generateMetadata({ params }) {
 
 export default async function ProductPage({ params }) {
   const { slug } = await params;
-  const p = getProduct(slug);
+  const p = await getProduct(slug);
   if (!p) notFound();
 
-  const related = getProducts()
+  const related = (await getProducts())
     .filter((x) => x.cat === p.cat && x.slug !== p.slug)
     .slice(0, 3);
 

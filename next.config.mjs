@@ -3,7 +3,7 @@ const nextConfig = {
   // خروجی standalone — مناسب هاست Node (لیارا، پارس‌پک کلود، VPS)
   output: 'standalone',
   images: { unoptimized: true },
-  serverExternalPackages: ['sharp', 'better-sqlite3'],
+  serverExternalPackages: ['sharp', 'pg'],
 };
 
 export default nextConfig;
