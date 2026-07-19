@@ -247,22 +247,15 @@ export default function AdminDashboard() {
           {products.map((p) => (
             <div className="admin-pcard" key={p.slug}>
               <div className="imgs">
+                {p.images.length === 0 && (
+                  <span className="no-img">هنوز عکسی ندارد — از دکمه‌ی «آپلود عکس» اضافه کنید</span>
+                )}
                 {p.images.map((i) => (
                   <span className="imwrap" key={i}>
                     <img src={i} alt="" loading="lazy" />
                     <button title="حذف این عکس" onClick={() => delImage(p.slug, i)}>✕</button>
                   </span>
                 ))}
-                <label className="addimg" title="افزودن عکس">
-                  +
-                  <input
-                    type="file"
-                    accept="image/*"
-                    multiple
-                    hidden
-                    onChange={(e) => addImages(p.slug, e.target.files)}
-                  />
-                </label>
               </div>
               <div className="body">
                 {pEdit === p.slug ? (
@@ -313,7 +306,17 @@ export default function AdminDashboard() {
                       </a>
                     </div>
                     <div className="row">
-                      <button className="btn btn-primary a-small" onClick={() => startEditProduct(p)}>
+                      <label className="btn btn-primary a-small" style={{ cursor: 'pointer' }}>
+                        📷 آپلود عکس
+                        <input
+                          type="file"
+                          accept="image/*"
+                          multiple
+                          hidden
+                          onChange={(e) => addImages(p.slug, e.target.files)}
+                        />
+                      </label>
+                      <button className="btn btn-ghost a-small" onClick={() => startEditProduct(p)}>
                         ویرایش متن
                       </button>
                       <button className="btn btn-ghost a-small" onClick={() => toggleFeatured(p.slug, !p.featured)}>

@@ -583,6 +583,7 @@ section{padding:68px 0}
   flex-shrink:0;width:60px;border-radius:8px;border:2px dashed var(--sage-dark);
   display:grid;place-items:center;font-size:1.6rem;color:var(--sage-dark);cursor:pointer;
 }
+.admin-pcard .imgs .no-img{display:flex;align-items:center;justify-content:center;width:100%;font-size:.8rem;color:#7d6c5a;text-align:center;padding:0 10px}
 .admin-pcard .body{padding:14px 16px}
 .admin-pcard .body b{color:var(--walnut-d)}
 .admin-pcard .meta{font-size:.78rem;color:#6f6357;margin:2px 0 10px}
