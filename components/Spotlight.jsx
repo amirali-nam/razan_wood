@@ -2,8 +2,10 @@
 import { useEffect, useRef, useState } from 'react';
 
 /* ویترین سینمایی: عکس‌ها با زوم آرام (کن‌برنز) نمایش داده می‌شوند */
+const MAX_SPOTLIGHT = 15; // حداکثر تعداد آیتم‌های ویترین
+
 export default function Spotlight({ products }) {
-  const slides = products.map((p) => ({
+  const slides = products.slice(0, MAX_SPOTLIGHT).map((p) => ({
     name: p.name,
     desc: p.desc,
     src: p.images[0],
