@@ -86,7 +86,7 @@ input,select,textarea{font-family:inherit}
 .nav-links a.active:not(.nav-cta)::after{width:100%}
 .nav-cta{background:var(--terra-d);color:var(--white)!important;padding:9px 20px;border-radius:999px;font-size:.88rem;transition:background .2s}
 .nav-cta:hover{background:#a0512f}
-.menu-btn{display:none;background:none;border:none;font-size:1.6rem;color:var(--walnut-d)}
+.menu-btn{display:none;background:none;border:none;font-size:1.6rem;color:var(--walnut-d);margin-inline-end:16px}
 @media(max-width:920px){
   .nav-links{display:none}
   .menu-btn{display:block}
