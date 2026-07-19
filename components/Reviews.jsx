@@ -30,9 +30,6 @@ export default function Reviews({ reviews }) {
       <div className="container">
         <div className="sec-head reveal">
           <h2>مشتری‌ها چه می‌گویند</h2>
-          <p style={{ fontSize: '.85rem' }}>
-            (نمونه — نظرات واقعی مشتری‌ها از دایرکت جایگزین می‌شود)
-          </p>
         </div>
         <div className="review-stage reveal">
           {list.map((r, i) => (
