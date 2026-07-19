@@ -17,9 +17,17 @@ export async function PUT(req, { params }) {
     const feat = fd.get('featured');
     if (feat !== null) fields.featured = feat === 'true';
 
+    const replace = fd.get('replaceImages') === 'true';
     const files = fd.getAll('images').filter((f) => typeof f === 'object' && f.size > 0);
     if (files.length) {
-      fields.images = [...p.images, ...(await saveImages(slug, files, p.images.length + 1))];
+      if (replace) {
+        // عکس‌های قدیمی (از جمله شکسته‌ها) پاک و فقط عکس‌های جدید جایگزین می‌شوند
+        const newImgs = await saveImages(slug, files, 1);
+        for (const old of p.images) await removeImageFile(old);
+        fields.images = newImgs;
+      } else {
+        fields.images = [...p.images, ...(await saveImages(slug, files, p.images.length + 1))];
+      }
     }
     await updateProduct(slug, fields);
     return NextResponse.json({ ok: true });

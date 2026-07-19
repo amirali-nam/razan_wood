@@ -117,13 +117,16 @@ export default function AdminDashboard() {
     j.ok ? (flash('✓ ذخیره شد'), load()) : flash(j.error, false);
   };
 
-  const addImages = async (slug, files) => {
+  const addImages = async (slug, files, replace = false) => {
     if (!files?.length) return;
     const fd = new FormData();
     [...files].forEach((f) => fd.append('images', f));
-    flash('⏳ در حال آپلود عکس‌ها…');
+    if (replace) fd.set('replaceImages', 'true');
+    flash(replace ? '⏳ در حال جایگزینی عکس‌ها…' : '⏳ در حال آپلود عکس‌ها…');
     const j = await (await fetch('/api/admin/products/' + slug, { method: 'PUT', body: fd })).json();
-    j.ok ? (flash('✓ عکس‌ها اضافه شدند'), load()) : flash(j.error, false);
+    j.ok
+      ? (flash(replace ? '✓ عکس‌ها جایگزین شدند' : '✓ عکس‌ها اضافه شدند'), load())
+      : flash(j.error, false);
   };
 
   const startEditProduct = (p) => {
@@ -307,13 +310,34 @@ export default function AdminDashboard() {
                     </div>
                     <div className="row">
                       <label className="btn btn-primary a-small" style={{ cursor: 'pointer' }}>
-                        📷 آپلود عکس
+                        🔁 جایگزینی عکس‌ها
                         <input
                           type="file"
                           accept="image/*"
                           multiple
                           hidden
-                          onChange={(e) => addImages(p.slug, e.target.files)}
+                          onChange={(e) => {
+                            if (
+                              e.target.files.length &&
+                              confirm('همه‌ی عکس‌های فعلی این محصول حذف و با عکس‌های جدید جایگزین شوند؟')
+                            ) {
+                              addImages(p.slug, e.target.files, true);
+                            }
+                            e.target.value = '';
+                          }}
+                        />
+                      </label>
+                      <label className="btn btn-ghost a-small" style={{ cursor: 'pointer' }}>
+                        ➕ افزودن عکس
+                        <input
+                          type="file"
+                          accept="image/*"
+                          multiple
+                          hidden
+                          onChange={(e) => {
+                            addImages(p.slug, e.target.files);
+                            e.target.value = '';
+                          }}
                         />
                       </label>
                       <button className="btn btn-ghost a-small" onClick={() => startEditProduct(p)}>
