@@ -13,6 +13,8 @@ export default function AdminDashboard() {
   const [msg, setMsg] = useState(null); // {text, ok}
   const [busy, setBusy] = useState(false);
   const [previews, setPreviews] = useState([]);
+  const [pEdit, setPEdit] = useState(null); // slug محصولی که در حال ویرایش است
+  const [pDraft, setPDraft] = useState({ name: '', cat: '', price: '', desc: '', longDesc: '' });
   const formRef = useRef(null);
   const router = useRouter();
 
@@ -122,6 +124,29 @@ export default function AdminDashboard() {
     flash('⏳ در حال آپلود عکس‌ها…');
     const j = await (await fetch('/api/admin/products/' + slug, { method: 'PUT', body: fd })).json();
     j.ok ? (flash('✓ عکس‌ها اضافه شدند'), load()) : flash(j.error, false);
+  };
+
+  const startEditProduct = (p) => {
+    setPEdit(p.slug);
+    setPDraft({ name: p.name, cat: p.cat, price: p.price, desc: p.desc, longDesc: p.longDesc || '' });
+  };
+
+  const saveProduct = async (slug) => {
+    if (!pDraft.name.trim() || !pDraft.desc.trim() || !pDraft.cat.trim()) {
+      return flash('نام، دسته و توضیح کوتاه لازم است', false);
+    }
+    const fd = new FormData();
+    fd.set('name', pDraft.name);
+    fd.set('cat', pDraft.cat);
+    fd.set('price', pDraft.price);
+    fd.set('desc', pDraft.desc);
+    fd.set('longDesc', pDraft.longDesc);
+    const j = await (await fetch('/api/admin/products/' + slug, { method: 'PUT', body: fd })).json();
+    if (j.ok) {
+      flash('✓ متن محصول ویرایش شد');
+      setPEdit(null);
+      load();
+    } else flash(j.error || 'خطا', false);
   };
 
   const logout = async () => {
@@ -240,21 +265,66 @@ export default function AdminDashboard() {
                 </label>
               </div>
               <div className="body">
-                <b>{p.name}</b> {p.featured && <span className="admin-badge">منتخب</span>}
-                <div className="meta">
-                  {p.cat} · {faNum(p.images.length)} عکس ·{' '}
-                  <a href={`/products/${p.slug}/`} target="_blank" style={{ direction: 'ltr', color: 'var(--sage-dark)' }}>
-                    /{p.slug}/ ↗
-                  </a>
-                </div>
-                <div className="row">
-                  <button className="btn a-danger" onClick={() => delProduct(p.slug, p.name)}>
-                    حذف محصول
-                  </button>
-                  <button className="btn btn-ghost a-small" onClick={() => toggleFeatured(p.slug, !p.featured)}>
-                    {p.featured ? 'حذف از منتخب‌ها' : 'افزودن به منتخب‌ها'}
-                  </button>
-                </div>
+                {pEdit === p.slug ? (
+                  <div className="admin-form" style={{ gap: 8 }}>
+                    <input
+                      value={pDraft.name}
+                      onChange={(e) => setPDraft({ ...pDraft, name: e.target.value })}
+                      placeholder="نام محصول"
+                    />
+                    <div className="grid2">
+                      <input
+                        value={pDraft.cat}
+                        onChange={(e) => setPDraft({ ...pDraft, cat: e.target.value })}
+                        placeholder="دسته‌بندی"
+                      />
+                      <input
+                        value={pDraft.price}
+                        onChange={(e) => setPDraft({ ...pDraft, price: e.target.value })}
+                        placeholder="قیمت"
+                      />
+                    </div>
+                    <input
+                      value={pDraft.desc}
+                      onChange={(e) => setPDraft({ ...pDraft, desc: e.target.value })}
+                      placeholder="توضیح کوتاه (روی کارت)"
+                    />
+                    <textarea
+                      value={pDraft.longDesc}
+                      onChange={(e) => setPDraft({ ...pDraft, longDesc: e.target.value })}
+                      placeholder="توضیح کامل (صفحه‌ی محصول)"
+                    />
+                    <div className="row">
+                      <button className="btn btn-primary a-small" onClick={() => saveProduct(p.slug)}>
+                        ذخیره
+                      </button>
+                      <button className="btn btn-ghost a-small" onClick={() => setPEdit(null)}>
+                        انصراف
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <b>{p.name}</b> {p.featured && <span className="admin-badge">منتخب</span>}
+                    <div className="meta">
+                      {p.cat} · {faNum(p.images.length)} عکس ·{' '}
+                      <a href={`/products/${p.slug}/`} target="_blank" style={{ direction: 'ltr', color: 'var(--sage-dark)' }}>
+                        /{p.slug}/ ↗
+                      </a>
+                    </div>
+                    <div className="row">
+                      <button className="btn btn-primary a-small" onClick={() => startEditProduct(p)}>
+                        ویرایش متن
+                      </button>
+                      <button className="btn btn-ghost a-small" onClick={() => toggleFeatured(p.slug, !p.featured)}>
+                        {p.featured ? 'حذف از منتخب‌ها' : 'افزودن به منتخب‌ها'}
+                      </button>
+                      <button className="btn a-danger" onClick={() => delProduct(p.slug, p.name)}>
+                        حذف محصول
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           ))}
