@@ -31,7 +31,7 @@ export default function Spotlight({ products }) {
       <div className="container">
         <div className="sec-head reveal">
           <h2>نمای نزدیک</h2>
-          <p>ظرافت حکاکی را از نزدیک ببینید — هر قطعه، ساعت‌ها کارِ دست است.</p>
+          <p>ظرافت منبت را از نزدیک ببینید — هر قطعه، ساعت‌ها کارِ دست است.</p>
         </div>
         <div className="spot-stage reveal">
           {slides.map((s, i) => (
