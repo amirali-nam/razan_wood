@@ -36,8 +36,9 @@ export default async function Home() {
               <RisingTitle>بر تنِ چوب</RisingTitle>
             </h1>
             <p>
-              هر قطعه‌ی رزان با دست حکاکی می‌شود؛ از قندان‌ها و جعبه‌های منبت تا تابلو و
-              نوشت‌افزار چوبی. چوبی که قصه دارد، برای خانه‌ای که حس دارد.
+              در رزان، هر قطعه از چوب گردوی طبیعی با دست و با دقت ساخته می‌شود؛ از ظروف
+              پذیرایی خاص و ست‌های چوبی تا اکسسوری‌های دکوراتیو. چوبی که با هنر دست جان
+              می‌گیرد؛ برای فضایی که گرما، اصالت و حس ماندگار دارد.
             </p>
             <div className="hero-btns">
               <Link className="btn btn-primary" href="/products/">مشاهده محصولات</Link>
@@ -89,25 +90,27 @@ export default async function Home() {
           <div className="reveal">
             <h2>قصه‌ی رزان</h2>
             <p>
-              رزان از عشق به چوب و هنر دستی شروع شد؛ از حکاکیِ گل‌ها و شاخ‌وبرگ روی تنِ چوب
-              گردو. هر محصول ساعت‌ها زمان می‌برد و هیچ دو قطعه‌ای دقیقاً مثل هم نیستند.
+              رزان از عشق به چوب و هنر دست آغاز شد؛ جایی که هر تکه چوب گردو با دقت و ظرافت
+              جان می‌گیرد. از نقش‌های الهام‌گرفته از طبیعت تا فرم‌های ماندگار، هر محصول حاصل
+              ساعت‌ها کار و توجه به جزئیات است. در رزان هیچ دو قطعه‌ای دقیقاً شبیه هم نیست؛
+              چرا که هر رگه‌ی چوب و هر نقش دست‌ساز، داستانی منحصربه‌فرد دارد.
             </p>
             <div className="about-card" style={{ margin: '20px 0' }}>
               <Counters />
             </div>
             <Link className="btn btn-primary" href="/about/">
-              خواندن قصه‌ی کامل
+              ادامه‌ قصه‌ی رزان
             </Link>
           </div>
           <figure className="about-photo reveal" style={{ '--rd': '.15s' }}>
             <img
-              src="/images/artisan-workshop.jpg"
-              alt="هنرمند رزان در حال حکاکی و پرداختِ یک قطعه‌ی چوبی در کارگاه"
+              src="/images/artisan-portrait.jpg"
+              alt="هنرمند رزان در حال حکاکی روی چوب"
               loading="lazy"
             />
             <figcaption>
               <span className="dot" />
-              دستانِ پشتِ هر قطعه
+              روایت یک چوب
             </figcaption>
           </figure>
         </div>
@@ -151,6 +154,9 @@ export default async function Home() {
         <div className="cta reveal">
           <h2>یک قطعه از رزان، برای خانه‌ی شما</h2>
           <p>همین حالا سفارش‌تان را در دایرکت یا واتساپ ثبت کنید.</p>
+          <p style={{ fontWeight: 800, marginTop: -14, marginBottom: 26 }}>
+            امکان پرداخت دو مرحله‌ای برای سفارش‌های شما فراهم است.
+          </p>
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
             <a className="btn btn-wa" href={`https://wa.me/${SITE.waNumber}`} target="_blank" rel="noopener">سفارش در واتساپ</a>
             <a className="btn btn-ghost" href={SITE.igDirect} target="_blank" rel="noopener">سفارش در دایرکت</a>

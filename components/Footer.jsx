@@ -18,7 +18,7 @@ export default function Footer() {
             <h4>دسترسی سریع</h4>
             <Link href="/products/">محصولات</Link>
             <Link href="/gallery/">گالری</Link>
-            <Link href="/custom-order/">سفارش سفارشی</Link>
+            <Link href="/custom-order/">محصول سفارشی</Link>
             <Link href="/about/">قصه‌ی رزان</Link>
           </div>
           <div>

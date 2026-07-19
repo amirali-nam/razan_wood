@@ -8,7 +8,7 @@ const LINKS = [
   { href: '/', label: 'خانه' },
   { href: '/products/', label: 'محصولات' },
   { href: '/gallery/', label: 'گالری' },
-  { href: '/custom-order/', label: 'سفارش سفارشی' },
+  { href: '/custom-order/', label: 'محصول سفارشی' },
   { href: '/about/', label: 'قصه‌ی رزان' },
 ];
 

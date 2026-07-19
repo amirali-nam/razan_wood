@@ -3,7 +3,8 @@ import { useMemo, useState } from 'react';
 import { SITE, waLink } from '@/lib/site';
 
 const TYPES = [
-  'جعبه / صندوقچه',
+  'ظروف پذیرایی خاص',
+  'سینی پذیرایی',
   'قندان / ظرف پذیرایی',
   'تابلوی نقش‌برجسته',
   'نوشت‌افزار (خودکار/اتود)',
@@ -21,7 +22,7 @@ export default function CustomOrderForm() {
   const [copied, setCopied] = useState(false);
 
   const message = useMemo(() => {
-    let m = `سلام 🌱 از سایت رزان برای سفارش سفارشی پیام می‌دم.\n`;
+    let m = `سلام 🌱 از سایت رزان برای محصول سفارشی پیام می‌دم.\n`;
     if (name.trim()) m += `👤 نام: ${name.trim()}\n`;
     m += `🪵 نوع محصول: ${type}\n`;
     if (design.trim()) m += `✿ طرح/نقش دلخواه: ${design.trim()}\n`;
@@ -56,11 +57,11 @@ export default function CustomOrderForm() {
       </div>
       <div>
         <label htmlFor="of-design">طرح یا نقش دلخواه</label>
-        <input id="of-design" value={design} onChange={(e) => setDesign(e.target.value)} placeholder="مثلاً: گل آفتابگردان، اسم حک‌شده، طرح ماهی…" />
+        <input id="of-design" value={design} onChange={(e) => setDesign(e.target.value)} placeholder="مثلاً: گل آفتابگردان، ترکیب گل‌های متفاوت و…" />
       </div>
       <div>
         <label htmlFor="of-size">ابعاد تقریبی (اختیاری)</label>
-        <input id="of-size" value={size} onChange={(e) => setSize(e.target.value)} placeholder="مثلاً: حدود ۲۰×۱۵ سانتی‌متر" />
+        <input id="of-size" value={size} onChange={(e) => setSize(e.target.value)} placeholder="مثلاً: سینی پذیرایی قطر ۳۰ سانتی‌متر" />
       </div>
       <div>
         <label htmlFor="of-notes">توضیحات بیشتر</label>

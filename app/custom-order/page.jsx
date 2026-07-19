@@ -1,7 +1,7 @@
 import CustomOrderForm from '@/components/CustomOrderForm';
 
 export const metadata = {
-  title: 'سفارش سفارشی',
+  title: 'محصول سفارشی',
   description: 'طرح دلخواه‌تان را ثبت کنید — رزان آن را با دست روی چوب گردو می‌سازد.',
 };
 
@@ -11,7 +11,7 @@ export default function CustomOrderPage() {
       <div className="page-head">
         <h1>سفارش طرح دلخواه</h1>
         <p>
-          چیزی در ذهن دارید که در محصولات نیست؟ فرم زیر را پر کنید؛ پیام آماده می‌شود و با
+          محصولی با طراحی خاص در نظر دارید؟ فرم زیر را پر کنید؛ پیام آماده می‌شود و با
           یک کلیک به واتساپ یا دایرکت رزان می‌رود.
         </p>
       </div>

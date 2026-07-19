@@ -55,7 +55,7 @@ export default async function ProductPage({ params }) {
           <div className="order-note">
             💡 این محصول با دست ساخته می‌شود؛ اگر سایز یا طرح متفاوتی می‌خواهید، از صفحه‌ی{' '}
             <Link href="/custom-order/" style={{ color: 'var(--sage-dark)', fontWeight: 700 }}>
-              سفارش سفارشی
+              محصول سفارشی
             </Link>{' '}
             درخواست بدهید.
           </div>
