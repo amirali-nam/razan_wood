@@ -68,6 +68,7 @@ input,select,textarea{font-family:inherit}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:14px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:900;font-size:1.2rem;color:var(--walnut-d)}
 .brand small{display:block;font-weight:400;font-size:.7rem;color:var(--walnut-2);letter-spacing:.06em}
+.brand span{margin-top:16px}
 .brand-wordmark{height:26px;width:auto;display:block;margin-bottom:3px}
 @media(max-width:520px){.brand-wordmark{height:22px}}
 .logo-img{
