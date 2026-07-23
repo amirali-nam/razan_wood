@@ -27,8 +27,22 @@ export default function ScrollFX() {
         }),
       { threshold: 0.12 }
     );
-    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
-    return () => io.disconnect();
+    // یک عنصر و همه‌ی .reveal های داخلش را observe می‌کند
+    const observeAll = (root) => {
+      if (!root || root.nodeType !== 1) return;
+      if (root.classList.contains('reveal') && !root.classList.contains('show')) io.observe(root);
+      root.querySelectorAll('.reveal:not(.show)').forEach((el) => io.observe(el));
+    };
+    observeAll(document.body);
+    // کارت‌هایی که بعداً (مثلاً با فیلترِ محصولات) به صفحه اضافه می‌شوند هم گرفته می‌شوند
+    const mo = new MutationObserver((muts) =>
+      muts.forEach((m) => m.addedNodes.forEach((n) => observeAll(n)))
+    );
+    mo.observe(document.body, { childList: true, subtree: true });
+    return () => {
+      io.disconnect();
+      mo.disconnect();
+    };
   }, [path]);
 
   return null;
